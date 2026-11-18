@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+    --fundo: #0e0c1a;
+    --card: #1a1730;
+    --borda: #2c2752;
+    --texto: #f3f1ff;
+    --suave: #a9a4c9;
+    --destaque: #8b5cf6;
+    --destaque2: #ec4899;
+    --degrade: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", system-ui, Arial, sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 15% 0%, rgba(139, 92, 246, 0.25), transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(236, 72, 153, 0.18), transparent 40%),
+        var(--fundo);
+    background-attachment: fixed;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 24px;
+    background: rgba(14, 12, 26, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borda);
+}
+
+header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: var(--degrade);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header a {
+    background: var(--degrade);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+header a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(236, 72, 153, 0.4);
+}
+
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 16px 56px;
+}
+
+#listaMusicas {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.musica {
+    position: relative;
+    padding: 22px 24px 22px 92px;
+    background: var(--card);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.musica::before {
+    content: "\266A";
+    position: absolute;
+    left: 20px;
+    top: 22px;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    color: #ffffff;
+    background: var(--degrade);
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+}
+
+.musica:hover {
+    transform: translateY(-3px);
+    border-color: var(--destaque);
+    box-shadow: 0 14px 34px rgba(139, 92, 246, 0.22);
+}
+
+.musica h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.artista {
+    color: #c4b5fd;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.detalhes {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--suave);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.editar,
+.apagar {
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.editar {
+    color: #c4b5fd;
+    border: 1.5px solid var(--destaque);
+}
+
+.editar:hover {
+    background: var(--destaque);
+    color: #ffffff;
+}
+
+.apagar {
+    color: #fb7185;
+    border: 1.5px solid #fb7185;
+}
+
+.apagar:hover {
+    background: #e11d48;
+    border-color: #e11d48;
+    color: #ffffff;
+}
+
+.editar:active,
+.apagar:active {
+    transform: scale(0.96);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #f9a8d4;
+    outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+    header {
+        padding: 14px 16px;
+    }
+
+    .musica {
+        padding: 20px 18px;
+    }
+
+    .musica::before {
+        position: static;
+        margin-bottom: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
